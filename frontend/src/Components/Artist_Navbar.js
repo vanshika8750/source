@@ -49,6 +49,9 @@ function Artist_Navbar() {
                     <Link to="/Previously_hired_artist" className="menu-bar-options">Previously hired artists</Link>
                     </li> */}
                     <li className="nav-text list-group-item">
+                    <Link to="/Community_listing" className="menu-bar-options">Community</Link>
+                    </li>   
+                    <li className="nav-text list-group-item">
                     <Link to="/Artist_chat" className="menu-bar-options">Chat</Link>
                     </li>
 

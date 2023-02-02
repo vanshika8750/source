@@ -67,6 +67,7 @@ import Create_community from './Create_community'
 import Forgot_password from './Forgot_password'
 import Applied_artist_application from './Applied_artist_application';
 import Password_change from './Password_change'
+import Chat_community from './Chat_community'
 
 
 
@@ -159,6 +160,7 @@ export default function RouterPage() {
    <Route path="/Forgot_password" exact element={<Forgot_password/>}/>
    <Route path="/Applied_artist_application" exact element={<Applied_artist_application/>}/>
    <Route path="/Password_change" exact element={<Password_change/>}/>
+   <Route path="/Chat_community" exact element={<Chat_community/>}/>
        
         </Routes>
 

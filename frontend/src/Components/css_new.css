@@ -243,3 +243,65 @@ color: #DC143C;
     width:100%
   }
 }
+/* create community */
+.community_inputs{
+  background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.356);
+  height: 40px;
+  border-radius: 10px;
+  width: 35vh;
+}
+.row_cont_community{
+  display: flex;
+}
+.sector_comm,.art_comm,.subgroup,.participant_limit,.min_age,.expertise{
+  width: 50vw;
+}
+.s{
+  margin-left: 15px;
+}
+.comm_label{
+  width: 12vw;
+}
+.img_chat{
+  width:50px;
+  height:60px;
+  border-radius: 50px;
+}
+.candidate{
+  display: flex;
+  font-size: 17px;
+  align-items: center;
+  margin-left: 25px;
+}
+.name{
+  margin-left: 20px;
+}
+.admin{
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.member{
+  font-size: 25px;
+  font-weight: 500;
+}
+.content-about-chat-comm{
+  margin-left: 20px;
+}
+.infoo{
+  margin:30px;
+  margin-left: 60px;
+}
+.rounded{
+  display: flex;
+}
+.chat_comm_msg{
+  background-color: rgba(128, 128, 128, 0.295);
+  width: 35vw;
+  border: 1px solid black;
+  color: black;
+  border-radius: 10px;
+  margin-left: 20px;
+  padding: 20px;
+}
