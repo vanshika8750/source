@@ -68,6 +68,11 @@ import Forgot_password from './Forgot_password'
 import Applied_artist_application from './Applied_artist_application';
 import Password_change from './Password_change'
 import Chat_community from './Chat_community'
+import Collaborations_search from './Collaborations_search.js'
+import View_collabs  from './View_collabs'
+import Collaboration_submission from './Collaboration_submission'
+import Upload_collaborations from './Upload_collaborations'
+import Applications_collab from './Applications_collab'
 
 
 
@@ -161,6 +166,11 @@ export default function RouterPage() {
    <Route path="/Applied_artist_application" exact element={<Applied_artist_application/>}/>
    <Route path="/Password_change" exact element={<Password_change/>}/>
    <Route path="/Chat_community" exact element={<Chat_community/>}/>
+   <Route path="/Collaborations_search" exact element={<Collaborations_search/>}/>
+   <Route path="/View_collabs" exact element={<View_collabs/>}/>
+   <Route path="/Collaboration_submission" exact element={<Collaboration_submission/>}/>
+   <Route path="/Upload_collaborations" exact element={<Upload_collaborations/>}/>
+   <Route path="/Applications_collab" exact element={<Applications_collab/>}/>
        
         </Routes>
 

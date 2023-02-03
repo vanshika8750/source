@@ -305,3 +305,11 @@ color: #DC143C;
   margin-left: 20px;
   padding: 20px;
 }
+
+/* collaborations css */
+.date_collab_search{
+  margin-left:10vw;
+}
+.collab_margin_below{
+  margin-bottom: 20px;
+}
