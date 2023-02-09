@@ -1,9 +1,12 @@
    
   import React from 'react'
-  import {Link} from 'react-router-dom'
+  import {Link, useParams} from 'react-router-dom'
 //   import './Artist.css'
   import Artist_Navbar from './Artist_Navbar'
   export default function Artist_application_submit() {
+    let params = useParams();
+    console.log(params);
+   
   return (
   <div>
     {/* navBar */}
@@ -19,7 +22,7 @@
                 <form className="d-flex" role="search">
                     <input className="form-control me-2 " type="search" placeholder="Search Opportunities
                     " aria-label="Search" />
-                    <button className="btn btn-outline-danger btn-search " type="submit">Search</button>
+                    <button className="btn btn-outline-danger btn-search "  type="submit">Search</button>
                 </form>
             </div>
         </div>

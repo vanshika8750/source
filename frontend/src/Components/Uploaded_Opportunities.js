@@ -24,7 +24,7 @@ export default function Uploaded_Opportunities() {
         fetchData();
     },[])
 
-    
+    console.log(opportunityCards);
   return (
     <div>
 
@@ -55,6 +55,7 @@ export default function Uploaded_Opportunities() {
         <div className="patron-uploaded-opportunities-body container">
            
         {opportunityCards.map((singleData, index)=>(
+            
             <div className="card patron-uploaded-opportunities-card">
             <div className="card-body">
                 <div style={{marginLeft:"5px"}} className="row patron-uploaded-opportunities-body-header">

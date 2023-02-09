@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import './Frontpage.css'
 import './Desc.css'
 
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useNavigate } from "react-router-dom";
 import Navbar_frontpage from "./Navbar_frontpage";
@@ -13,7 +14,7 @@ export const Login = (props) => {
     const [errorflag, setErrorflag] = useState(0);
 
     const navigate = useNavigate();
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -39,6 +40,7 @@ export const Login = (props) => {
                 {
                     setErrorflag(2);
                 }
+                
                 console.log(result.user._id);
                 console.log(result);
                 localStorage.setItem("email",result.user.email);
@@ -60,6 +62,7 @@ export const Login = (props) => {
                     }
                 }
     }
+    const notify = () => toast("Login succesfull");
 
     return (
 <div>
@@ -99,7 +102,7 @@ export const Login = (props) => {
         <div className="auth-form-container">
             <h1><b>Login</b></h1>
             <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor="email">Email Id</label>
+                <label htmlFor="email">Email</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
@@ -107,7 +110,8 @@ export const Login = (props) => {
                 {errorflag === 1? <p style={{"color" : "red"}}>Email is incorrect! OR Email do not exist!</p>:''}
                 {errorflag === 2? <p style={{"color" : "red"}}>Password  is incorrect!</p>:''}
                 
-                <button type="submit">Log In</button>
+                <button type="submit" onClick={notify}>Log In</button>
+                <ToastContainer/>
                 <Link to="/Forgot_password" style={{"textAlign":"left"}}>Forget Password </Link>
 
 

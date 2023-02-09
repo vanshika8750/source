@@ -61,22 +61,23 @@ import Terms_and_conditions from './Terms_and_conditions'
 
 import Findingjobs from './Findingjobs';
 import FindingTalent from './FindingTalent';
-import Community_listing from './Community_listing'
-import Community_guidelines from './Community_guidelines'
-import Create_community from './Create_community'
+//import Community_listing from './Community_listing'
+//import Community_guidelines from './Community_guidelines'
+//import Create_community from './Create_community'
 import Forgot_password from './Forgot_password'
 import Applied_artist_application from './Applied_artist_application';
 import Password_change from './Password_change'
+
+ import Community_listing from './Community_listing'
+import Community_guidelines from './Community_guidelines'
+import Create_community from './Create_community'
 import Chat_community from './Chat_community'
 import Collaborations_search from './Collaborations_search.js'
 import View_collabs  from './View_collabs'
 import Collaboration_submission from './Collaboration_submission'
 import Upload_collaborations from './Upload_collaborations'
 import Applications_collab from './Applications_collab'
-
-
-
-
+import View_artist_detail from './View_artist_detail'
 export default function RouterPage() {
 
   // const [currentForm, setCurrentForm] = useState('register');
@@ -120,6 +121,10 @@ export default function RouterPage() {
    <Route path="/Patron_view_application" exact element={<Patron_view_application/>}/>
    <Route path="/Previously_hired_artist" exact element={<Previously_hired_artists />}/>
 
+<Route path="/Artist_viewdetailopp/:id" exact element={<Artist_viewdetailopp/>}/>
+<Route path = "/Artist_application/:id" exact element = {<Artist_application/>}/>
+<Route path = "/Artist_Application2/:id" exact element = {<Artist_application2/>}/>
+<Route path = "/Artist_application_submit/:id" exact element = {<Artist_application_submit/>}/>
    <Route path="/Ratepatron" exact element={<Ratepatron/>}/>
    <Route path="/Upload_Opportunity" exact element={<Upload_Opportunity />}/>
    <Route path="/Uploaded_Opportunities" exact element={<Uploaded_Opportunities/>}/>
@@ -131,7 +136,7 @@ export default function RouterPage() {
    <Route path="/View_shortlisted_artist" exact element={<View_shortlisted_artist />}/>
    <Route path="/Patron_Registration" exact element={<Patron_Registration />}/>
    <Route path="/Navbar" exact element={<Navbar />}/>
-        
+   <Route path="/View_artist_detail" exact element={<View_artist_detail/>}/>
 
 
    <Route path="/Artist_dashboard" exact element={<Artist_dashboard />}/>
@@ -159,19 +164,21 @@ export default function RouterPage() {
 
    <Route path="/Findingjobs" exact element={<Findingjobs/>}/>
    <Route path="/FindingTalent" exact element={<FindingTalent/>}/>
-   <Route path="/Community_listing" exact element={<Community_listing/>}/>
-   <Route path="/Community_guidelines" exact element={<Community_guidelines/>}/>
-   <Route path="/Create_community" exact element={<Create_community/>}/>
+
    <Route path="/Forgot_password" exact element={<Forgot_password/>}/>
    <Route path="/Applied_artist_application" exact element={<Applied_artist_application/>}/>
    <Route path="/Password_change" exact element={<Password_change/>}/>
-   <Route path="/Chat_community" exact element={<Chat_community/>}/>
    <Route path="/Collaborations_search" exact element={<Collaborations_search/>}/>
    <Route path="/View_collabs" exact element={<View_collabs/>}/>
    <Route path="/Collaboration_submission" exact element={<Collaboration_submission/>}/>
    <Route path="/Upload_collaborations" exact element={<Upload_collaborations/>}/>
    <Route path="/Applications_collab" exact element={<Applications_collab/>}/>
-       
+ <Route path="/Community_listing" exact element={<Community_listing/>}/>
+   <Route path="/Community_guidelines" exact element={<Community_guidelines/>}/>
+   <Route path="/Create_community" exact element={<Create_community/>}/>
+   <Route path="/Chat_community" exact element={<Chat_community/>}/>
+
+  
         </Routes>
 
         

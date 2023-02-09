@@ -1,9 +1,45 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from'react'
   import React from 'react'
   import Artist_Navbar from './Artist_Navbar'
   import './stylesheet.css'
   import './css_new.css'
   export default function Artist_search_opportunity() {
+    const posted_by_email = localStorage.getItem('email');
+    const [opportunityCards, setOpportunityCards] = useState([]);
+    const [patronUser , setPatronUser] = useState({});
+    useEffect(()=>{
+        async function fetchData(){
+           let opportunityAllData = await fetch("http://localhost:4000/api/getAllOpportunities");
+            opportunityAllData = await opportunityAllData.json(); 
+           const arrayrev = opportunityAllData.data;
+            setOpportunityCards(arrayrev.reverse());
+            console.log(arrayrev);
+            
+        }
+        fetchData();
+      },[])
+      useEffect(()=>{
+        async function fetchData(){
+           let opportunityAllData = await fetch("http://localhost:4000/api/getAllUsers");
+            opportunityAllData = await opportunityAllData.json(); 
+           const arrayrev = opportunityAllData.data;
+          const obj = {};
+           arrayrev.map((singledata , index)=>{
+            if(singledata.role === 1)
+            {
+              obj[singledata.email] = singledata.patron.name_of_company;
+            }
+            
+           })
+           setPatronUser(obj);
+          
+           console.log(patronUser);
+          
+        }
+        fetchData();
+      },[])
+
   return (
   <div>
     {/* Modal */}
@@ -213,22 +249,23 @@ import { Link } from 'react-router-dom'
               <img src="assets/images/filter.png" />
             </span>
             <div className="search-data-text text-center">
-              3 search result for
-              <strong className="search-data-text-category">'Dancer'</strong>
+              {opportunityCards.length} search result 
+              <strong className="search-data-text-category"></strong>
             </div>
           </div>
         </div>
       </div>
       <div className="patron-search-artist-body container">
-        <div className="card artist-card">
+        {opportunityCards.map((singleoppo , index)=>(
+          <div className="card artist-card">
           <div className="card-body">
             <div className="row patron-search-artist-body-header">
               <div className="col artist-name">
-                Background Dancer
+                {singleoppo.position}
               </div>
               <div className="w-100" />
               <div className="col artist-category">
-                Company Name
+                {singleoppo.posted_by_email}
               </div>
             </div>
             <div className="row patron-search-artist-body-footer">
@@ -236,71 +273,19 @@ import { Link } from 'react-router-dom'
                 <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
                   <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
                 </svg>
-                Location
+                {singleoppo.location}
               </div>
               <div className="col-auto artist-details">
-                <Link to="/Artist_viewdetailopp">
+                <Link to={`/Artist_viewdetailopp/${singleoppo._id}`} >
                   View details
-                  <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
+                  <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}}  />
                 </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="card artist-card">
-          <div className="card-body">
-            <div className="row patron-search-artist-body-header">
-              <div className="col artist-name">
-                Background Dancer1
-              </div>
-              <div className="w-100" />
-              <div className="col artist-category">
-                Company Name
-              </div>
-            </div>
-            <div className="row patron-search-artist-body-footer">
-              <div className="col-auto me-auto artist-location">
-                <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
-                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                </svg>
-                Location
-              </div>
-              <div className="col-auto artist-details">
-                <Link to="/Artist_viewdetailopp">
-                  View details
-                  <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="card artist-card">
-          <div className="card-body">
-            <div className="row patron-search-artist-body-header">
-              <div className="col artist-name">
-                Background Dancer2
-              </div>
-              <div className="w-100" />
-              <div className="col artist-category">
-                Company Name
-              </div>
-            </div>
-            <div className="row patron-search-artist-body-footer">
-              <div className="col-auto me-auto artist-location">
-                <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
-                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                </svg>
-                Location
-              </div>
-              <div className="col-auto artist-details">
-                <Link to="/Artist_viewdetailopp">
-                  View details
-                  <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
+        
       </div>
     </div>
   </div>

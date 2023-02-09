@@ -46,7 +46,7 @@ export default function Artistdesc() {
 <div class="container">
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3  bg-dark rounded"><span class="text-danger"><strong>Artists</strong></span>
+                <h1 class="shadow p-3  bg-dark   "><span class="text-danger"><strong>Artists</strong></span>
                 </h1>
             </div>
         </div>
@@ -145,7 +145,7 @@ export default function Artistdesc() {
         <div class="container">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h1 class="shadow p-3 mt-2✔ bg-dark rounded"><span class="text-danger"><strong>Performing Art</strong></span>
+                    <h1 class="shadow p-3 mt-2✔ bg-dark   "><span class="text-danger"><strong>Performing Art</strong></span>
                             
                     </h1>
                     <p class="h5">The performing arts are performed for an audience, which include music, dance, theatre
@@ -208,7 +208,7 @@ export default function Artistdesc() {
 <div class='container'>
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

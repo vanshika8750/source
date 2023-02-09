@@ -114,7 +114,7 @@ export default function Community_guidelines() {
             </div>
             <div className="dismiss-btn">
                 <button id="dismiss-popup-btn" onClick={popup_btn_dismiss}>
-                    Click to continue
+                  <Link to="/Community_listing">  Click to continue </Link>
                 </button>
             </div>
         </div>

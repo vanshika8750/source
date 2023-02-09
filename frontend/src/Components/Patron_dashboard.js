@@ -1,72 +1,53 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import  { Component } from 'react'
 import Navbar from './Navbar'
+
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import './Patron.css'
 
-
-export class Patron_dashboard extends Component {
+export default function Patron_dashboard() {
     
-  render() {
-    return (
-      <div>
-        {/* <div className="offcanvas offcanvas-start left-side-menu-bar" data-bs-scroll="true" data-bs-backdrop="true"
-        tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-        <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
-                <a className="navbar-brand" style={{marginLeft: '17px'}} href="index.html">
-                    <span className="text-danger text"> <strong>ekala</strong></span>kaar
-                </Link>
-            </h5>
-            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div className="offcanvas-body container">
-            <div className="accordion accordion-flush" id="accordionFlushExample">
-                <div className="accordion-item">
-                    <a className="accordion-button collapsed menu-bar-options" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Profile
-                    </Link>
-                    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body" style={{marginLeft: '30px'}}>
-                            <div style={{marginBottom: '10px'}}>
-                                <Link to="#" className="menu-bar-options" style={{marginBottom: '5px'}}> View profile</Link>
-                            </div>
-                            <div>
-                                <Link to="edit-patron-profile.html" className="menu-bar-options">Edit profile</Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                        <Link to="patron-search-artist.html" className="menu-bar-options">Search artists</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="patron-view-applications.html" className="menu-bar-options">View applications</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="uploaded-opportunities.html" className="menu-bar-options">View uploaded opportunities</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="view-shortlisted-artist.html" className="menu-bar-options">Shortlisted artists</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="view-contacted-artist.html" className="menu-bar-options">Contacted artists</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="/Previously_hired_artist" className="menu-bar-options">Previously hired artists</Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link to="chat.html" className="menu-bar-options">Chat</Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div> */}
+    const [artistname, setArtistName] = useState('');
+    const [artistlname , setArtistlame] = useState('');
+    const [artist_email, setArtistEmail] = useState('');
+    const [artist_phone, setArtistPhone] = useState('');
+    const [rtistexperience , setArtistExp] = useState('');
+    const [hiredEmplayee, setHiredEmployee] = useState('');
+    const [mostlyhiredfor , setMostHiredFor] = useState('');
+    const [totaldata, setTotalData] =useState('');
+    
+    useEffect(()=>{
+       const fetchData =async()=>{
+            
+            let artistinitialpage = await fetch(`http://localhost:4000/api/patron/${localStorage.getItem('_id')}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            })
+           
+           artistinitialpage = await artistinitialpage.json();
+           console.log(artistinitialpage);
+           setTotalData(artistinitialpage);
 
-    <nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
+           console.log(totaldata);
+
+           }
+           fetchData().then((d)=>{
+            setArtistName(totaldata.name);
+            setArtistlame(totaldata.lastname);
+            setArtistPhone(totaldata.phoneno);
+            setArtistEmail(totaldata.email);
+           })
+    },[artist_email])
+   
+
+ 
+  return (
+    <div>
+
+<nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
         <div className="container-fluid">
             <div className="left-components">
                 
@@ -97,7 +78,7 @@ export class Patron_dashboard extends Component {
                             </div>
                             <div className="w-100"></div>
                             <div className="col patron-dashboard-header-patron-name-category" style={{marginLeft:"10px",marginTop:"-8px"}}>
-                                <div className="patron-dashboard-header-patron-name">Patron name</div>
+                                <div className="patron-dashboard-header-patron-name">{artistname} {artistlname}</div>
                                 <div className="patron-dashboard-header-patron-category">Hiring manager</div>
                             </div>
                         </div>
@@ -138,14 +119,14 @@ export class Patron_dashboard extends Component {
                                     <label for="validationCustom01"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">First
                                         name</label>
-                                    <input type="text" className="form-control" name="firstname" value="First Name"
+                                    <input type="text" className="form-control" name="firstname" value={artistname}
                                         disabled/>
                                 </div>
                                 <div className="col space">
                                     <label for="validationCustom02"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">Last
                                         name</label>
-                                    <input type="text" className="form-control" name="lastname" value="Last Name" disabled/>
+                                    <input type="text" className="form-control" name="lastname" value={artistlname} disabled/>
                                 </div>
                             </div>
                             <div className="row container patron-dashboard-patron-account-info-input-rows"
@@ -154,7 +135,7 @@ export class Patron_dashboard extends Component {
                                     <label for="validationCustom02"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">Phone
                                         number</label>
-                                    <input type="tel" className="form-control" name="phone" value="9876543937" disabled/>
+                                    <input type="tel" className="form-control" name="phone" value={artist_phone} disabled/>
                                 </div>
                                 <div className="col space">
                                     <label for="validationCustomUsername"
@@ -162,7 +143,7 @@ export class Patron_dashboard extends Component {
                                     <div className="input-group has-validation">
                                         <span className="input-group-text" id="inputGroupPrepend">@</span>
                                         <input type="text" className="form-control" name="email"
-                                            aria-describedby="inputGroupPrepend" value="patron@email.com" disabled/>
+                                            aria-describedby="inputGroupPrepend" value={artist_email} disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -390,9 +371,8 @@ export class Patron_dashboard extends Component {
             </div>
         </div>
     </div>
-      </div>
-    )
-  }
-}
 
-export default Patron_dashboard
+
+    </div>
+  )
+}

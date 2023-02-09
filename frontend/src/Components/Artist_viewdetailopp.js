@@ -1,9 +1,25 @@
 
   import React from 'react'
-  import {Link } from 'react-router-dom'
+  import { useState, useEffect } from 'react'
+  import {Link, useParams } from 'react-router-dom'
   import './Artist.css'
   import Artist_Navbar from './Artist_Navbar'
   export default function Artist_viewdetailopp() {
+    const [opportunityCards, setOpportunityCards] = useState([]);
+    let params = useParams()
+    console.log(params);
+    useEffect(()=>{
+      async function fetchData(){
+         let opportunityAllData = await fetch("http://localhost:4000/api/getAllOpportunities");
+          opportunityAllData = await opportunityAllData.json(); 
+         const arrayrev = opportunityAllData.data;
+          setOpportunityCards(arrayrev.reverse());
+      }
+      fetchData();
+    },[])
+
+let singleobj = opportunityCards.find(each=>each._id === params.id);
+console.log(singleobj);
   return (
   <div>
    
@@ -89,7 +105,7 @@
             </div>
           </div>
           <div style={{textAlign: 'center'}}>
-            <Link to="/Artist_application" className="btn btn-danger btn-lg"> Apply Now</Link>
+            <Link to={`/Artist_application/${params.id}`} className="btn btn-danger btn-lg"> Apply Now</Link>
           </div>
         </div>
       </div>

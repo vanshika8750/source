@@ -45,7 +45,7 @@ export default function Contact() {
     <div class="container">
         <div class="col-md-12">
             <div class="section-header text-center pb-5">
-                <h1 class="shadow p-3 mb-3 bg-dark rounded"><span class="text-danger"><strong>We </strong>love to hear You</span>
+                <h1 class="shadow p-3 mb-3 bg-dark  "><span class="text-danger"><strong>We love to hear You </strong></span>
                  </h1>
                 <p class="h4"><strong class="text-danger">ekalakaar.com</strong> has being trying to engage with
                     People across platforms,
@@ -126,7 +126,7 @@ export default function Contact() {
 <div class='container'>
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

@@ -46,7 +46,14 @@ export default function Upload_Opportunity() {
        result = await result.json();
        console.log(result );
     }
-
+    const popup_btn_open=()=>{
+        document.getElementById("open-popup-btn").style.display = "none";
+         document.getElementsByClassName("popup")[0].classList.add("active");
+    }
+    const popup_btn_dismiss=()=>{
+        document.getElementById("open-popup-btn").style.display = "block";
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+    }
   return (
     <div>
 
@@ -142,11 +149,27 @@ export default function Upload_Opportunity() {
                             <input type="text" value={link_of_documents} onChange={(e)=>setLinkOfDocuments(e.target.value)} className="form-control" id="link-to-document"/>
                         </div>
                     </div>
+                    <div className="popup center" style={{ left:"350px"}} >
+            <div className="icon">
+                <i className="fa fa-check"></i>
+            </div>
+            <div className="title">
+            Success!!    
+            </div>
+            <div className="description">
+                Thankyou for your opportunity is uploaded Successfully!!
+            </div>
+            <div className="dismiss-btn">
+                <button id="dismiss-popup-btn" onClick={popup_btn_dismiss}>
+                   <Link to="/Uploaded_opportunities">Click to continue</Link> 
+                </button>
+            </div>
+          </div>
                     <div className="d-grid gap-1 d-md-flex justify-content-center patron-upload-opportunity-upload-button">
-                    <button className="btn btn-danger me-md-2 btn-new" type="submit" value="Submit">
+                    <button className="btn btn-danger me-md-2 btn-new" button id="open-popup-btn" onClick={popup_btn_open} type="submit" value="Submit">
                                 Upload
                          </button>
-                        
+                     
                     </div>
                 </form>
             </div>

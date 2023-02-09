@@ -20,7 +20,7 @@ export default function Clients() {
 <div class='container'>
     <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Happy Clients</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Happy Clients</strong></span>
                 </h1>
             </div>
         </div>
@@ -170,7 +170,7 @@ export default function Clients() {
         <div class="container">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h1 class="shadow p-3 mt-5 bg-dark rounded"><span class="text-danger"><strong>Customer Experience</strong></span>
+                    <h1 class="shadow p-3 mt-5 bg-dark   "><span class="text-danger"><strong>Customer Experience</strong></span>
                             
                     </h1>
                     <p class="h5">"It comes down to how your customer experiences the brand – and how that brand makes a person feel." 
@@ -219,7 +219,7 @@ export default function Clients() {
         <div class="container">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h1 class="shadow p-3 mt-5 bg-dark rounded"><span class="text-danger"><strong> Key Features</strong></span>
+                    <h1 class="shadow p-3 mt-5 bg-dark   "><span class="text-danger"><strong> Key Features</strong></span>
                             
                     </h1>
 
@@ -282,7 +282,7 @@ The benefits of using a client management system for clients include:
 <div class='container'>
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

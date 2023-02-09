@@ -62,10 +62,13 @@ export default function Upload_collaborations() {
                         <textarea className="form-control"   id="aboutCommunity" rows="3"></textarea>
                     </div> 
                     <div className="d-grid gap-1 d-md-flex justify-content-center patron-upload-opportunity-upload-button">
-                    <button className="btn btn-danger me-md-2 btn-new" type="submit" value="Submit" style={{marginTop:"15px",marginBottom:"15px"}}>
-                               Create Collaboration
-                         </button>
-                        
+                    {/* <button className="btn btn-danger me-md-2 btn-new" type="submit" value="Submit" style={{marginTop:"15px",marginBottom:"15px"}}>
+                          <Link to="/Collaborations_serach"> Create Collaboration</Link> 
+                         </button> */}
+                         <div style ={{textAlign: "center"}}>
+        <Link to="/Collaborations_search"><button type="button" className="btn btn-danger btn-lg btn-new"  > Upload</button></Link>
+
+    </div> 
                     </div>
                 </form>
             </div>

@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import Artist_Navbar from './Artist_Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './stylesheet.css'
-export class Artist_application extends Component {
-  render() {
-    return (
-      <div>
-         <nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
+
+export default function Artist_application() {
+    let params = useParams();
+    console.log(params);
+  return (
+    <div>
+
+
+<nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
         <div className="container-fluid">
             <div className="left-components">
                <Artist_Navbar className="nav_artist"/>
@@ -114,15 +118,12 @@ export class Artist_application extends Component {
             <div style={{display: "flex", justifyContent:"center", alignItems: "center"}}>
                 <Link to="/Artist_edit_profile" className="btn btn-lg btn-danger mx-5 btn-new">Edit Profile</Link>
           
-                <Link to="/Artist_Application2"className="btn btn-lg btn-danger btn-new " >Apply</Link>
+                <Link to={`/Artist_Application2/${params.id}`}className="btn btn-lg btn-danger btn-new " >Apply</Link>
             </div>
 
 
         </div>
     </div>
-      </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default Artist_application

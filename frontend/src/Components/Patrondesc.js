@@ -44,7 +44,7 @@ export default function Patrondesc() {
     <div class="container">
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3  bg-dark rounded"><span class="text-danger"><strong>PATRON</strong></span>
+                <h1 class="shadow p-3  bg-dark   "><span class="text-danger"><strong>PATRON</strong></span>
                 </h1>
             </div>
         </div>
@@ -169,7 +169,7 @@ Partnerships with the arts not only help support the community, but they are als
         <div class="container">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h1 class="shadow p-3 mt-5 bg-dark rounded"><span class="text-danger"><strong>Performing Art</strong></span>
+                    <h1 class="shadow p-3 mt-5 bg-dark   "><span class="text-danger"><strong>Performing Art</strong></span>
                             
                     </h1>
                     
@@ -231,7 +231,7 @@ Partnerships with the arts not only help support the community, but they are als
 <div class='container'>
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

@@ -52,11 +52,12 @@ function Navbar() {
                     <Link to="/Previously_hired_artist" className="menu-bar-options">Previously hired artists</Link>
                     </li>
                     <li className="nav-text list-group-item">
-                    <Link to="/Create_community" className="menu-bar-options">Create Community</Link>
+                    <Link to="/Community_listing" className="menu-bar-options">Community</Link>
                     </li>
                     <li className="nav-text list-group-item">
                     <Link to="/chat" className="menu-bar-options">Chat</Link>
                     </li>
+                    
 
              
             </ul>

@@ -43,7 +43,7 @@ export default function Partnersdesc() {
     <div class="container">
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3  bg-dark rounded"><span class="text-danger"><strong>Partners</strong></span>
+                <h1 class="shadow p-3  bg-dark   "><span class="text-danger"><strong>Partners</strong></span>
                 </h1>
             </div>
         </div>
@@ -149,7 +149,7 @@ Partners can support artists in a variety of ways. They can provide
         <div class="container">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h1 class="shadow p-3 mt-5 bg-dark rounded"><span class="text-danger"><strong>Performing Art</strong></span>
+                    <h1 class="shadow p-3 mt-5 bg-dark   "><span class="text-danger"><strong>Performing Art</strong></span>
                             
                     </h1>
                     <p class="h5">The performing arts are performed for an audience, which include music, dance, theatre
@@ -211,7 +211,7 @@ Partners can support artists in a variety of ways. They can provide
 <div class='container'>
         <div class="col-sm-12">
             <div class="section-header text-center mt-5 ">
-                <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+                <h1 class="shadow p-3 mb-5 bg-dark   "><span class="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

@@ -53,9 +53,10 @@ export default function Patron_Registration() {
             },
         });
         result = await result.json();
-        
+        console.log(result);
         
     }
+
     
 const _id = localStorage.getItem('_id');
     useEffect(()=>{
@@ -90,6 +91,15 @@ const _id = localStorage.getItem('_id');
         }).catch(err=>console.log(err));
     },[emailid]);
 console.log(patronStoreData)
+
+const popup_btn_open=()=>{
+    document.getElementById("open-popup-btn").style.display = "none";
+     document.getElementsByClassName("popup")[0].classList.add("active");
+}
+const popup_btn_dismiss=()=>{
+    document.getElementById("open-popup-btn").style.display = "block";
+    document.getElementsByClassName("popup")[0].classList.remove("active");
+}
   return (
 
     <div>
@@ -282,17 +292,39 @@ console.log(patronStoreData)
                         </div>
                         {/* <!-- Offering section --> */}
 
+        <div className="popup center">
+            <div className="icon">
+                <i className="fa fa-check"></i>
+            </div>
+            <div className="title">
+            Success!!    
+            </div>
+            <div className="description">
+                Thanks You have registered Successfully!!
+            </div>
+            <div className="dismiss-btn">
+                <button id="dismiss-popup-btn" onClick={popup_btn_dismiss}>
+               <Link to="/Patron_dashboard" > Click to continue</Link>
+                </button>
+            </div>
+        </div>
+        <div className="center mt-2 " >
+            <button className='btn btn-danger btn-new  me-md-2' id="open-popup-btn" onClick={popup_btn_open}>
+                Submit
+            </button>
+        </div>
                    
                         {/* <!-- Buttons --> */}
-                        <div className="gap-2 d-md-flex justify-content-end patron-registration-buttons"
-                            id="previous-button">
-                         
-                            <button className="btn btn-danger btn-new  me-md-2" type="button" id="prevBtn" 
-                                style={{"margin-bottom": "10px"}}>{name_of_company === ''? submitMessage : editPage }</button>
-                           
-                        </div>
+                     
                     </div>
                 </form>
+                {/* <div className="gap-2 d-md-flex justify-content-end patron-registration-buttons"
+                            id="previous-button">
+                         
+                            <button className="btn btn-danger btn-new  me-md-2" onClick={popup_btn_open} type="submit" id="prevBtn" 
+                                style={{"margin-bottom": "10px"}} >Submit</button>
+                          
+                        </div> */}
             </div>
         </div>
         

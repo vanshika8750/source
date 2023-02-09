@@ -268,7 +268,20 @@ import { Link } from 'react-router-dom'
           </div>
         </div>
       </div>
+
+      
     </div>
+    
+        
+        {/* <div className="d-grid gap-1 d-md-flex justify-content-center patron-upload-opportunity-upload-button">
+                    <button className="btn btn-danger me-md-2 btn-new" >
+                            <Link to="/Create_community">   Create Community</Link>
+                         </button>             
+        </div> */}
+        <div style ={{textAlign: "center"}}>
+        <Link to="/Create_community"><button type="button"  className="btn btn-danger btn-lg btn-new"  > Upload new community</button></Link>
+
+    </div> 
   </div>
   )
      }

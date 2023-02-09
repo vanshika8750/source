@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Frontpage.css'
+// import './Frontpage.css'
 import './Dashboard.css'
 import Navbar_frontpage from './Navbar_frontpage.js'
 // import Unorderedlist from 'react-native-unordered-list'
@@ -94,7 +94,7 @@ export default function Frontpage() {
 <div className="container">
     <div className="col-sm-12">
         <div className="section-header text-center">
-            <h1 className="shadow p-3  mt-5 bg-dark rounded"><span className="text-danger"><strong>About us</strong></span>
+            <h1 className="shadow p-3  mt-5 bg-dark  "><span className="text-danger"><strong>About us</strong></span>
             </h1>
         </div>
     </div>
@@ -174,11 +174,11 @@ Kalkaar art is a unique and beautiful form of art that has been passed down thro
 {/* !-- services offer --> */}
 <div className="container">
 <div className="col-sm-12">
-<div className="section-header text-center ">
-<h1 className="shadow p-3 mb-5 bg-dark rounded"><span className="text-danger"><strong>What we offer</strong></span>
-</h1>
-</div>
-</div>
+        <div className="section-header text-center">
+            <h1 className="shadow p-3  my-4 bg-dark  "><span className="text-danger"><strong>What We Offer</strong></span>
+            </h1>
+        </div>
+    </div>
 
 <div className="card-deck">
 <div className='row'>
@@ -266,7 +266,7 @@ learn any art and may perform in future to follow their fashion.
 <div className="row">
 <div className="col-sm-12">
 <div className="section-header text-center ">
-<h1 className="shadow p-3 mb-5 bg-dark rounded"><span className="text-danger"><strong>Why choose us</strong></span>
+<h1 className="shadow p-3 mb-5 bg-dark  "><span className="text-danger"><strong>Why choose us</strong></span>
 </h1>
 </div>
 </div>
@@ -318,7 +318,7 @@ for a long while .</p>
 
 <div class="col-sm-12 ">
 <div class="section-header text-center mt-5 ">
-    <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Media</strong></span>
+    <h1 class="shadow p-3 mb-5 bg-dark  "><span class="text-danger"><strong>Media</strong></span>
     </h1>
 </div>
 </div>
@@ -365,7 +365,7 @@ for a long while .</p>
 <div class='container'>
 <div class="col-sm-12">
 <div class="section-header text-center mt-5 ">
-    <h1 class="shadow p-3 mb-5 bg-dark rounded"><span class="text-danger"><strong>Contact us</strong></span>
+    <h1 class="shadow p-3 mb-5 bg-dark  "><span class="text-danger"><strong>Contact us</strong></span>
     </h1>
 </div>
 </div>
@@ -425,13 +425,13 @@ for a long while .</p>
         </div>
         <div class="line_usefullinks"></div>
         <div class="links_useful">
-            <div class="col">
+            <div class="col " style={{fontSize:'20px' ,fontWeight:'bold'}}>
                 <div><Link to="/">Home</Link></div>
                 <div><Link to="/Clients">Clients</Link></div>
                 <div><Link to="/Login">Join Us</Link></div>
                 <div><Link to="/Contact">Contact Us</Link></div>
             </div>
-            <div class="col">
+            <div class="col" style={{fontSize:'20px' ,fontWeight:'bold'}}>
             <div><Link to="/">About</Link></div>
             <div><Link to="#">Opportunities</Link></div>
             <div><Link to="#mediapic">Media</Link></div>

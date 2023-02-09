@@ -96,12 +96,18 @@ export default function Create_community() {
                             </div>
                         </div>
                     </div>
-                    <div className="d-grid gap-1 d-md-flex justify-content-center patron-upload-opportunity-upload-button">
+                    {/* <div className="d-grid gap-1 d-md-flex justify-content-center patron-upload-opportunity-upload-button">
                     <button className="btn btn-danger me-md-2 btn-new" type="submit" value="Submit" style={{marginTop:"15px",marginBottom:"15px"}}>
-                               Create Community
+                        <Link to="/Community_listing">   Create Community  </Link>
                          </button>
                         
-                    </div>
+                    </div> */}
+
+                    
+    <div style ={{textAlign: "center"}}>
+        <Link to="/Community_listing"><button type="button"  className="btn btn-danger btn-lg btn-new"  > Create community</button></Link>
+
+    </div> 
                 </form>
             </div>
         </div>

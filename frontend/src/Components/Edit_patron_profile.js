@@ -104,7 +104,7 @@ export class Edit_patron_profile extends Component {
                             <div className="position-relative edit-patron-profile-save-changes" style={{marginTop:"40px"}}>
                                 <div className="position-absolute bottom-0">
                                     
-                                        <Link to="/" className="btn btn-danger btn-new" type="submit" value="Submit">
+                                        <Link to="/Patron_dashboard" className="btn btn-danger btn-new" type="submit" value="Submit">
                                        Save Changes
                                      </Link>
                                     

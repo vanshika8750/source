@@ -43,7 +43,7 @@ export default function Artloversdesc() {
 <div  className ="container">
         <div  className ="col-sm-12">
             <div  className ="section-header text-center mt-5 ">
-                <h1  className ="shadow p-3  bg-dark rounded"><span  className ="text-danger"><strong>Art Lovers</strong></span>
+                <h1  className ="shadow p-3  bg-dark   "><span  className ="text-danger"><strong>Art Lovers</strong></span>
                 </h1>
             </div>
         </div>
@@ -109,7 +109,7 @@ export default function Artloversdesc() {
         <div  className ="container">
             <div  className ="col-md-12">
                 <div  className ="section-header text-center ">
-                    <h1  className ="shadow p-3 mt-5 bg-dark rounded"><span  className ="text-danger"><strong>Performing Art</strong></span>
+                    <h1  className ="shadow p-3 mt-5 bg-dark   "><span  className ="text-danger"><strong>Performing Art</strong></span>
                  
                     </h1>
                     <p  className ="h5">
@@ -172,7 +172,7 @@ Art fans bring a unique energy and enthusiasm to the art world. They are often s
 <div  className ='container'>
         <div  className ="col-sm-12">
             <div  className ="section-header text-center mt-5 ">
-                <h1  className ="shadow p-3 mb-5 bg-dark rounded"><span  className ="text-danger"><strong>Contact us</strong></span>
+                <h1  className ="shadow p-3 mb-5 bg-dark   "><span  className ="text-danger"><strong>Contact us</strong></span>
                 </h1>
             </div>
         </div>

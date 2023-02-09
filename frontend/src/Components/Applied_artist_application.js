@@ -1,10 +1,46 @@
 import React from 'react'
 import Navbar from './Navbar'
 import './Navbar.css'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Patron.css'
 
 export default function Applied_artist_application() {
+  const [position,setPosition] = useState('');
+    const [about,setAbout] = useState('');
+    const [requirements,setRequirements] = useState('');
+    const [duration,setDuration] = useState(0);
+    const [link_of_documents,setLinkOfDocuments] = useState('');
+    const posted_by_email = localStorage.getItem('email');
+    const [opportunityCards, setOpportunityCards] = useState([]);
+    const [artistUser , setArtistUser] = useState([]);
+    useEffect(()=>{
+        async function fetchData(){
+           let opportunityAllData = await fetch(`http://localhost:4000/api/patron/opportunity/all/${posted_by_email}`);
+            opportunityAllData = await opportunityAllData.json(); 
+            setOpportunityCards(opportunityAllData);
+        }
+        fetchData();
+    },[])
+
+    useEffect(()=>{
+      async function fetchData(){
+         let opportunityAllData = await fetch("http://localhost:4000/api/getAllUsers");
+          opportunityAllData = await opportunityAllData.json(); 
+         const arrayrev = opportunityAllData.data;
+        const obj = [];
+         arrayrev.map((singledata , index)=>{
+          if(singledata.role === 2)
+          {
+            obj[singledata.email] = singledata.name  + ' ' + singledata.lastname;
+          }
+         })
+         setArtistUser(obj);
+      }
+      fetchData();
+    },[])
+    console.log(opportunityCards);
+    console.log(artistUser);
   return (
     <div>
       <nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
@@ -185,98 +221,49 @@ export default function Applied_artist_application() {
       </div>
     </div>
     <div className="view-shortlisted-artist-body container">
-      
-    <h3 style={{marginLeft:"17px"}}> Opportunity 1</h3>
-      <div className="card artist-card">
-      
-        <div className="card-body">
-          <div  style={{marginLeft:"7px"}} className="row view-shortlisted-artist-body-header">
-            <div className="col artist-name">
-              Name
-            </div>
-          
-            <div className="w-100" />
-            <div className="col artist-category">
-              Dancer
-            </div>
-          </div>
-          <div className="row view-shortlisted-artist-body-footer">
-            <div className="col-auto me-auto artist-location">
-              <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
-                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-              </svg>
-              Location
-            </div>
-            <div className="col-auto artist-details">
-              <Link to="/Artist_application">
-                View Application
-                <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="card artist-card">
-      
-      <div className="card-body">
-        <div  style={{marginLeft:"7px"}} className="row view-shortlisted-artist-body-header">
-          <div className="col artist-name">
-            Name
-          </div>
+      {opportunityCards.map((singleoppo,index)=>(
+        <>
+        {singleoppo.applied_by.length>0? <h3 style={{marginLeft:"17px"}}> Opportunity {index + 1}</h3> : ''}
         
-          <div className="w-100" />
-          <div className="col artist-category">
-            Dancer
-          </div>
-        </div>
-        <div className="row view-shortlisted-artist-body-footer">
-          <div className="col-auto me-auto artist-location">
-            <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
-              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-            </svg>
-            Location
-          </div>
-          <div className="col-auto artist-details">
-            <Link to="/Artist_application">
-              View Application
-              <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        {singleoppo.applied_by.map((userinfo, index)=>(
+           <div className="card artist-card">
+           <div className="card-body">
+             <div  style={{marginLeft:"7px"}} className="row view-shortlisted-artist-body-header">
+               <div className="col artist-name">
+                 {artistUser[userinfo.emailid]}
+                 
+               </div>
+             
+               <div className="w-100" />
+               <div className="col artist-category">
+                 {singleoppo.position}
+               </div>
+             </div>
+             <div className="row view-shortlisted-artist-body-footer">
+               <div className="col-auto me-auto artist-location">
+                 <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
+                   <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                 </svg>
+                 {singleoppo.location}
+               </div>
+               <div className="col-auto artist-details">
+                 <Link to="/View_artist_detail">
+                   View Application
+                   <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
+                 </Link>
+               </div>
+             </div>
+           </div>
+         </div>
+        ))}
+     
+      </>
+      ))}
+    
 
 
-      <h3 style={{marginLeft:"17px"}}> Opportunity 2</h3>
-      <div className="card artist-card">
-        <div className="card-body">
-          <div  style={{marginLeft:"7px"}}className="row view-shortlisted-artist-body-header">
-            <div className="col artist-name">
-              Name
-            </div>
-           
-            <div className="w-100" />
-            <div className="col artist-category">
-              Singer
-            </div>
-          </div>
-          <div className="row view-shortlisted-artist-body-footer">
-            <div className="col-auto me-auto artist-location">
-              <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} fill="currentColor" className="bi bi-geo-alt-fill text-danger" viewBox="0 0 16 16">
-                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-              </svg>
-              Location
-            </div>
-            <div className="col-auto artist-details">
-              <Link to="/Artist_application">
-                View Application
-                <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      
     </div>
   </div>
 </div>

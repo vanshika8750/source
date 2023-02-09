@@ -2,6 +2,9 @@
   import React from 'react'
   import { useState, useEffect } from 'react';
   import Artist_Navbar from './Artist_Navbar'
+  import { Link } from 'react-router-dom';
+  import './css_new.css'
+
   export default function Artist_edit_profile() {
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
@@ -16,12 +19,13 @@
     const [language, setLanguage] = useState('');
     const [education , setEducation] = useState('');
     const [skils, setSkill] = useState('');
+    const [category, setCategory] = useState('');
     const [experince , setExperience] = useState('');
     const [url, setUrl] = useState('');
     const [photo, setPhoto] = useState('');
     const [artistStoreData, setArtistStoreData] = useState('');
 
-    const artistRegister = async(e)=>{
+ const artistRegister = async(e)=>{
       e.preventDefault();
       const artistData = {
         fname,
@@ -36,7 +40,8 @@
         weight,
         language,
         education,
-        skils,
+        skills : skils ,
+        category,
         experince,
         url,
         photo
@@ -53,9 +58,8 @@
       })
       result = await result.json();
       
-
-      localStorage.setItem('skils',result.artist.skils);
-      localStorage.setItem('experince',result.artist.experince);
+console.log(result);
+      
     }
     const _id = localStorage.getItem('_id');
     useEffect(()=>{
@@ -69,6 +73,8 @@
         artistRegisterData = await artistRegisterData.json();
         setArtistStoreData(artistRegisterData.artist);
         console.log(artistRegisterData.artist);
+        console.log(artistRegisterData.name);
+       console.log(artistRegisterData);
 
       }
       fetchData().then((data)=>{
@@ -85,13 +91,21 @@
         setLanguage(artistStoreData.language);
         setEducation(artistStoreData.education);
         setSkill(artistStoreData.skils);
+        setCategory(artistStoreData.category);
         setExperience(artistStoreData.experince);
         setUrl(artistStoreData.url);
         
       }).catch(err=>console.error(err));
     },[emailid]);
     
-    
+    const popup_btn_open=()=>{
+    document.getElementById("open-popup-btn").style.display = "none";
+     document.getElementsByClassName("popup")[0].classList.add("active");
+}
+const popup_btn_dismiss=()=>{
+    document.getElementById("open-popup-btn").style.display = "block";
+    document.getElementsByClassName("popup")[0].classList.remove("active");
+}
   return (
   <div>
      
@@ -106,7 +120,7 @@
             </div>
             <div className="right-component" >
                 <form className="d-flex" role="search">
-                    <input className="form-control me-2 " type="search" placeholder="Search artist" aria-label="Search" />
+                    <input className="form-control me-2 " type="search" placeholder="Search artist" aria-label="Search"  />
                     <button className="btn btn-outline-danger btn-search " type="submit">Search</button>
                 </form>
             </div>
@@ -127,22 +141,23 @@
           <a href><span style={{fontWeight: 'bolder'}} className="text-danger h4">Change profile photo</span></a>
         </div>
       </div>
+      <form action='' onSubmit={artistRegister}>
       <div className="p-4 row">
         <div className="p-2 col-md-6">
           {/* first Name */}
           <div>
             <label htmlFor="validationCustom01" className="form-label">First name</label>
-            <input type="text" className="form-control" value={fname} onChange={(e)=>setFname(e.target.value)} name="firstname" id="validationCustom01" defaultValue required />
+            <input type="text" className="form-control" value={fname} onChange={(e)=>setFname(e.target.value)} name="firstname" id="validationCustom01" required />
           </div>
           {/* Phonenumber */}
           <div>
             <label htmlFor="validationCustom01" className="form-label"> Phone Number</label>
-            <input type="text" className="form-control" value={pno} onChange={(e)=>setPno(e.target.value)} name="firstname" id="validationCustom01" defaultValue required />
+            <input type="text" className="form-control" value={pno} onChange={(e)=>setPno(e.target.value)} name="firstname" id="validationCustom01" required />
           </div>
           {/* Age */}
           <div>
             <label htmlFor="validationCustom02" className="form-label">Age</label>
-            <input type="number" className="form-control" value={age} onChange={(e)=>setAge(e.target.value)}  name="age" id="validationCustom02" defaultValue required />
+            <input type="number" className="form-control" value={age} onChange={(e)=>setAge(e.target.value)}  name="age" id="validationCustom02" required />
             <div className="valid-feedback">
               Looks good!
             </div>
@@ -189,7 +204,7 @@
           {/* lastName */}
           <div>
             <label htmlFor="validationCustom02" className="form-label">Last name</label>
-            <input type="text" className="form-control" value={lname} onChange={(e)=>setLname(e.target.value)} name="lastname" id="validationCustom02" defaultValue required />
+            <input type="text" className="form-control" value={lname} onChange={(e)=>setLname(e.target.value)} name="lastname" id="validationCustom02" required />
             <div className="valid-feedback">
               Looks good!
             </div>
@@ -218,6 +233,7 @@
               Please select a Gender.
             </div>
           </div>
+         
           {/* Religion */}
           <div>
             <label htmlFor="validationCustom03" className="form-label">Religion</label>
@@ -242,6 +258,14 @@
               Please provide your Education
             </div>
           </div>
+           {/** Category */}
+          <div>
+            <label htmlFor="validationCustom03" className="form-label">Category</label>
+            <input type="text" className="form-control" value={category} onChange={(e)=>setCategory(e.target.value)}  name="religion" id="validationCustom03" required />
+            <div className="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
           {/* Experience */}
           <div>
             <label htmlFor="validationCustom05" className="form-label">Experience</label>
@@ -260,12 +284,29 @@
         <div>
           <label className="mb-2 mt-4" htmlFor="exampleFormControlFile1">Example file input</label>
           <br />
-          <input type="file" style={{width: '50%'}} value={photo} onChange={(e)=>setPhoto(e.target.value)} className="form-control-file" id="exampleFormControlFile1" />
+          <input type="file" style={{width: '50%'}} value={photo} onChange={(e)=>setPhoto(e.target.value)} className="form-control-file" id="exampleFormControlFile1"  />
         </div>
       </div>
-      <div className="col-12 mt-4 " style={{textAlign: 'right'}}>
-        <button className="btn btn-lg btn-danger" type="submit">Save Changes </button>
-      </div>
+
+      <div className="popup center">
+            <div className="icon">
+                <i className="fa fa-check"></i>
+            </div>
+            <div className="title">
+            Success!!    
+            </div>
+            <div className="description">
+                Thankyou your profile has been edited Successfully!!
+            </div>
+            <div className="dismiss-btn">
+                <button id="dismiss-popup-btn" onClick={popup_btn_dismiss}>
+               <Link to="/Artist_dashboard" >  Click to continue</Link>
+                </button>
+            </div>
+        </div>
+
+     <input type ='submit' id="open-popup-btn" onClick={popup_btn_open} />
+      </form>
     </div>
   </div>
   )

@@ -1,35 +1,51 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Artist_Navbar from './Artist_Navbar'
 import { Link } from 'react-router-dom'
 import './css_new.css'
-export class Artist_dashboard extends Component {
-    state={
-        artist_name:'',
-        artist_last_name:'',
-        artist_phone:'',
-        artist_skill:'',
-        artist_experience:'',
-        
-    }
-   
-   /* componentDidMount(){
-        async function fetchData(){
-            let artistinitialpage = await fetch(`http://localhost:4000/api/user/info/${localStorage.getItem('email')}`,{
+import Navbar from './Navbar'
+ import './Navbar.css'
+ import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export default function Artist_dashboard() {
+
+    const [artistname, setArtistName] = useState('');
+    const [artistlname , setArtistlame] = useState('');
+    const [artist_email, setArtistEmail] = useState('');
+    const [artist_phone, setArtistPhone] = useState('');
+    const [rtistexperience , setArtistExp] = useState('');
+    const [totaldata, setTotalData] =useState('');
+    
+    useEffect(()=>{
+       const fetchData =async()=>{
+            
+            let artistinitialpage = await fetch(`http://localhost:4000/api/user/${localStorage.getItem('_id')}`,{
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
-            });
-            artistinitialpage = await artistinitialpage.json();
-            console.log(artistinitialpage)
-        }
-        fetchData();
-    }*/
-  render() {
-    return (
-      <div>
-         
-    <nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
+            })
+           
+           artistinitialpage = await artistinitialpage.json();
+           
+           setTotalData(artistinitialpage);
+           localStorage.setItem('isRegister', artistinitialpage.isRegistered);
+           console.log(totaldata);
+           }
+           fetchData().then((d)=>{
+            setArtistName(totaldata.name);
+            setArtistlame(totaldata.lastname);
+            setArtistExp(totaldata.artist.experince);
+            setArtistPhone(totaldata.phoneno);
+            setArtistEmail(totaldata.email);
+           })
+    },[artistname])
+    
+  return (
+    <div>
+
+     
+<nav className="navbar bg-light fixed-top" style={{backgroundColor: 'white'}}>
         <div className="container-fluid">
             <div className="left-components">
                
@@ -60,17 +76,12 @@ export class Artist_dashboard extends Component {
                             </div>
                             <div className="w-100"></div>
                             <div className="col patron-dashboard-header-patron-name-category">
-                                <div className="patron-dashboard-header-patron-name">Artist name</div>
+                                <div className="patron-dashboard-header-patron-name">{artistname} {artistlname}</div>
                                 <div className="patron-dashboard-header-patron-category">Art name</div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-auto patron-dashboard-header-company-name-col">
-                        <div className="patron-dashboard-header-company-name">
-                            <img src="assets/images/verified.png" className="patron-dashboard-header-company-verified-icon"/>
-                            Company/Organization Name
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -100,14 +111,14 @@ export class Artist_dashboard extends Component {
                                     <label for="validationCustom01"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">First
                                         name</label>
-                                    <input type="text" className="form-control" name="firstname" value="First Name"
+                                    <input type="text" className="form-control" name="firstname" value={artistname}
                                         disabled/>
                                 </div>
                                 <div className="col space">
                                     <label for="validationCustom02"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">Last
                                         name</label>
-                                    <input type="text" className="form-control" name="lastname" value="Last Name" disabled/>
+                                    <input type="text" className="form-control" name="lastname" value={artistlname} disabled/>
                                 </div>
                             </div>
                             <div className="row container patron-dashboard-patron-account-info-input-rows"
@@ -116,7 +127,7 @@ export class Artist_dashboard extends Component {
                                     <label for="validationCustom02"
                                         className="form-label patron-dashboard-patron-account-info-input-lable">Phone
                                         number</label>
-                                    <input type="tel" className="form-control" name="phone" value="9876543937" disabled/>
+                                    <input type="tel" className="form-control" name="phone" value={artist_phone} disabled/>
                                 </div>
                                 <div className="col space">
                                     <label for="validationCustomUsername"
@@ -124,7 +135,7 @@ export class Artist_dashboard extends Component {
                                     <div className="input-group has-validation">
                                         <span className="input-group-text" id="inputGroupPrepend">@</span>
                                         <input type="text" className="form-control" name="email"
-                                            aria-describedby="inputGroupPrepend" value="Artist@email.com" disabled/>
+                                            aria-describedby="inputGroupPrepend" value={artist_email} disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +157,7 @@ export class Artist_dashboard extends Component {
                                     <div className="input-group has-validation">
 
                                         <input type="text" className="form-control" name="text"
-                                            aria-describedby="inputGroupPrepend" value="10" disabled/>
+                                            aria-describedby="inputGroupPrepend" value={rtistexperience} disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -160,12 +171,11 @@ export class Artist_dashboard extends Component {
                             <Link to="/Artist_edit_profile" className="btn btn-danger btn-new btn_art_reg">
                                 Edit Profile
                             </Link>
-                            <Link to="/Artist_registration" className="btn btn-danger btn-new mx-2 btn_art_reg">
-                                Artist Registration
-                            </Link>
+                            
                         </div>
                     </div>
                 </div>
+
                 
                 <div className="col  container">
                     <div className="card patron-dashboard-patron-relevant-kalakaars">
@@ -305,6 +315,8 @@ export class Artist_dashboard extends Component {
                         </div>
                     </div>
                 </div>
+
+                
                 <div className="col  container">
                     <div className="card patron-dashboard-hired-candidates">
                         <div className="card-header text-center patron-dashboard-body-all-card-header-text">
@@ -356,9 +368,9 @@ export class Artist_dashboard extends Component {
             </div>
         </div>
     </div>
-      </div>
-    )
-  }
-}
 
-export default Artist_dashboard
+
+
+    </div>
+  )
+}

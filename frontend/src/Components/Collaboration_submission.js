@@ -23,7 +23,9 @@ export class Collaboration_submission extends Component {
             </div>
         </div>
     </nav>
-
+        <br />
+        <br />
+        <br />
         <div className ="container " style= {{height: "80vh",display: "flex",justifyContent:" center",alignItems: "center"}}>
 
     <div className="card border-primary mb-3 " style={{height: "40vh", width: "50rem"}}>
@@ -31,10 +33,10 @@ export class Collaboration_submission extends Component {
             <div>Your request for collaboration has been sent!</div>
             <div>Kindly wait for the artist to review your application.</div>
         </div>
-        <div className="card-body text-primary" style={{display: "flex",justifyContent: "center",alignItems: "center"}}>
+        <div className="card-body text-primary  " style={{display: "flex",justifyContent: "center",alignItems: "center"}}>
            
             <div className=" btn_skill  mx-auto ">
-               <Link to="#"> <button className="btn btn-danger btn-lg p-lg-4 fw-light btn-new" type="button">Go to collaborations</button></Link>
+               <Link to="/Collaborations_search"> <button className="btn btn-danger btn-lg p-lg-4 fw-light btn-new btn_collab_sub" type="button">Go to collaborations</button></Link>
                
               </div>
         </div>

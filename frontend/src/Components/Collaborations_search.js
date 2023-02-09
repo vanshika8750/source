@@ -208,7 +208,7 @@ import { Link } from 'react-router-dom'
                 Location
               </div>
               <div className="col-auto artist-details">
-                <Link to="/Artist_viewdetailopp">
+                <Link to="/View_collabs">
                   View details
                   <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
                 </Link>
@@ -236,7 +236,7 @@ import { Link } from 'react-router-dom'
                 Location
               </div>
               <div className="col-auto artist-details">
-                <Link to="/Artist_viewdetailopp">
+                <Link to="/View_collabs">
                   View details
                   <img src="assets/images/rightArrow.png" style={{width: 10, height: 11}} />
                 </Link>
@@ -246,6 +246,11 @@ import { Link } from 'react-router-dom'
         </div>
       </div>
     </div>
+
+    <div style ={{textAlign: "center"}}>
+        <Link to="/Upload_collaborations"><button type="button" className="btn btn-danger btn-lg btn-new"  > Upload New</button></Link>
+
+    </div> 
   </div>
   )
      }
