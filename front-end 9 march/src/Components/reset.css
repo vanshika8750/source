@@ -1,0 +1,67 @@
+.forgot_page {
+    max-width: max-content;
+    margin: auto;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.forgot_page > i {
+    margin: 1rem;
+    font-size: 2rem;
+    color: rgb(220, 99, 99);
+}
+.forgot_header {
+    margin-bottom: 0.7rem;
+    color: rgb(77, 77, 77);
+    font-weight: 500;
+}
+.forgot_subheader {
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: rgb(99, 99, 99);
+}
+.input_field {
+    width: 100%;
+}
+.input_field > div {
+    width: 100%;
+    border: 1px solid rgb(125, 125, 125);
+    border-radius: 8px;
+    padding: .4rem;
+}
+.input_field > label {
+    font-weight: 500;
+}
+.input_field > div > input {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 0.9rem;
+    background: none;
+}
+.input_field > div > input::placeholder {
+    color: rgb(130, 130, 130);
+    font-size: 0.9rem;
+}
+.forget_submit {
+    width: 100%;
+    padding: 0.7rem 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: rgb(220, 99, 99);
+}
+.back_login {
+    color: rgb(99, 99, 99);
+    text-decoration: none;
+    margin-top: 2rem;
+}
+.back_login > i {
+    width: max-content;
+    margin-right: 0.5rem;
+}
